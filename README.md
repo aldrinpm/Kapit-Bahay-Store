@@ -1,25 +1,53 @@
-# Kapit-Bahay Store — LLM Development Starter
+# Kapit-Bahay Store
 
-A documentation-first starter pack for building a frontend-only Filipino neighborhood variety-store SPA with React, TypeScript, and Vite.
+> Everyday Essentials, Just Around the Corner. 🇵🇭
 
-## How to use
+A mobile-first, frontend-only e-commerce storefront for a Filipino neighborhood variety store — rice, canned goods, snacks, and daily necessities, all at honest prices. Prices are in Philippine pesos (₱).
 
-1. Extract this ZIP into an empty project folder.
-2. Open the extracted folder in your coding agent / IDE.
-3. Open this folder as an Obsidian vault (or add it as a vault folder).
-4. Read `AGENTS.md` and `docs/requirements/PROJECT-BRIEF.md`.
-5. Give your coding agent the prompt in `PROMPT-FOR-CODING-AGENT.md`.
-6. Ask the agent to inspect the repository and documentation before changing files.
-7. Initialize Graphify according to its current official instructions: https://github.com/Graphify-Labs/graphify
+![Kapit-Bahay Store landing page](assets/screenshot-home.png)
 
-## Important
+## Features
 
-This package contains project requirements and development guidance, not a completed React application. The coding agent should create the application incrementally.
+- **Animated landing hero** — full-bleed, mouse-reactive hero with floating product imagery.
+- **Category shortcuts** — quick jumps across 10 aisles (Rice & Grains, Canned Goods, Beverages, and more).
+- **Product catalog** — browse, search, category filtering, and sorting, with a product detail view.
+- **Cart drawer** — add, adjust, and remove items; the cart persists in `localStorage`.
+- **Simulated checkout** — Cash on Delivery checkout flow with an order confirmation screen. Clearly labeled as a simulation: no real payments, backend, or fulfillment.
 
-Graphify is an external analysis tool. Do not assume it is an Obsidian plugin or invent configuration commands. Follow the repository's current installation and usage documentation.
+## Tech Stack
 
-## Suggested first command
+- [React](https://react.dev) 19 + [TypeScript](https://www.typescriptlang.org) (strict mode)
+- [Vite](https://vite.dev) with Tailwind CSS 4
+- [Zustand](https://zustand.docs.pmnd.rs) for state management
+- [Lucide](https://lucide.dev) icons
 
-Ask your coding agent:
+## Getting Started
 
-> Read `AGENTS.md`, `PROJECT-MEMORY.md`, and all documents under `docs/requirements/`. Summarize the MVP scope, identify ambiguities and dependencies, propose an implementation plan, and wait for approval before coding.
+```bash
+npm install
+npm run dev
+```
+
+Then open http://localhost:5173.
+
+Other commands:
+
+```bash
+npm run build    # type-check with tsc and build for production
+npm run preview  # preview the production build
+npm run lint     # ESLint
+```
+
+## Documentation
+
+- Product scope: `docs/requirements/PROJECT-BRIEF.md`
+- User stories: `docs/requirements/USER-STORIES.md`
+- Acceptance criteria: `docs/requirements/ACCEPTANCE-CRITERIA.md`
+- Architecture: `docs/architecture/SYSTEM-DESIGN.md`
+- UI/UX direction: `docs/design/UI-UX-SPECIFICATION.md`
+- Delivery plan: `docs/development/ROADMAP.md`
+- Test strategy: `docs/development/TEST-PLAN.md`
+
+## MVP Scope
+
+This is a frontend-only SPA. There is intentionally no backend, database, real payment integration, authentication, admin dashboard, delivery tracking, or multi-branch support.
