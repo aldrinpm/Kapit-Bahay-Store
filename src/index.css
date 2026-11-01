@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+/* Custom global styles can go here, ensuring mobile-first baseline */
+@theme {
+  --color-kapit-primary: #006400; /* Deep Green */
+  --color-kapit-secondary: #FFD700; /* Warm Yellow */
+  --color-kapit-accent: #FF8C00; /* Orange */
+  --color-kapit-background: #FFF8F0; /* Warm Off-White */
+  --color-kapit-text: #36454F; /* Dark Charcoal */
+}
+
+body {
+  background-color: var(--color-kapit-background);
+  color: var(--color-kapit-text);
+}
+
+/* ------------------------------------------------------------------ *
+ * Landing animations (21st.dev-style). All motion is opt-in via these
+ * utility classes and is disabled under prefers-reduced-motion.
+ * ------------------------------------------------------------------ */
+@keyframes kb-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes kb-pulse-soft {
+  0%, 100% { transform: scale(1); opacity: 0.55; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+
+@keyframes kb-hero-fade-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.kb-float { animation: kb-float 6s ease-in-out infinite; }
+.kb-orbit { animation: kb-pulse-soft 8s ease-in-out infinite; }
+.kb-orbit-slow { animation: kb-pulse-soft 11s ease-in-out infinite; }
+.kb-hero-fade { animation: kb-hero-fade-in 0.7s ease-out both; }
+.kb-shadow-soft { box-shadow: 0 12px 30px -10px rgba(255, 140, 0, 0.4); }
+
+/* Respect users who prefer less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .kb-float,
+  .kb-orbit,
+  .kb-orbit-slow,
+  .kb-hero-fade {
+    animation: none !important;
+  }
+  .kb-btn-shimmer {
+    transition: none !important;
+  }
+  .kb-shimmer-sweep {
+    transform: translateX(-100%) !important;
+  }
+}
