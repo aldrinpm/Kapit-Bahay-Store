@@ -6,6 +6,8 @@ A mobile-first, frontend-only e-commerce storefront for a Filipino neighborhood 
 
 ![Kapit-Bahay Store landing page](assets/screenshot-home.png)
 
+![Mobile view](assets/mobile.png)
+
 ## Live Demo
 
 🔗 **[Live Preview](https://aldrinpm.github.io/Kapit-Bahay-Store/)** — Experience the storefront with the latest works-wheel hero, dark/light theme, and mobile-responsive design.
