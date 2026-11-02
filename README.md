@@ -5,6 +5,7 @@
 A mobile-first, frontend-only e-commerce storefront for a Filipino neighborhood variety store — rice, canned goods, snacks, and daily necessities, all at honest prices. Prices are in Philippine pesos (₱).
 
 ![Kapit-Bahay Store landing page](assets/screenshot-home.png)
+![Kapit-Bahay Store landing page](assets/mobile.png)
 
 ## Live Demo
 
