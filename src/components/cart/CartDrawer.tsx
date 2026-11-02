@@ -37,7 +37,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, onCheckout }) 
         ) : (
           cart.map(item => (
             <div key={item.productId} className="flex items-center space-x-4 border-b dark:border-white/10 pb-4">
-              <img src={item.product.imageUrl || '/images/placeholder.jpg'} alt={item.product.name} className="w-16 h-16 object-cover rounded" />
+              <img src={item.product.imageUrl || 'images/placeholder.jpg'} alt={item.product.name} className="w-16 h-16 object-cover rounded" />
               <div className="flex-grow min-w-0">
                 <h4 className="font-semibold text-kapit-primary dark:text-kapit-light truncate">{item.product.name}</h4>
                 <p className="text-sm text-gray-600 dark:text-kapit-light/75">₱{Math.round(item.product.price / 100).toLocaleString()}</p>

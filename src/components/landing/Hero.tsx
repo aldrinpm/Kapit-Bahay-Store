@@ -7,12 +7,12 @@ import ProductWheel from './ProductWheel';
 // Featured essentials for the hero's works-wheel visual. Titles are also
 // used by the index list and the front-card title when the drum is open.
 const WHEEL_ITEMS = [
-  { title: 'Rice 5 kg', src: '/images/rice5kg.jpg', alt: 'Bag of Philippine rice', href: '#catalog' },
-  { title: 'Sardines', src: '/images/sardines.jpg', alt: 'Canned sardines', href: '#catalog' },
-  { title: 'Softdrink 2L', src: '/images/softdrink2l.jpg', alt: 'Bottle of soft drink', href: '#catalog' },
-  { title: 'Bar Soap', src: '/images/soap.jpg', alt: 'Bar soap', href: '#catalog' },
-  { title: 'Loaf of Bread', src: '/images/bread.jpg', alt: 'Loaf of bread', href: '#catalog' },
-  { title: 'Ground Coffee', src: '/images/coffee.jpg', alt: 'Ground coffee', href: '#catalog' },
+  { title: 'Rice 5 kg', src: 'images/rice5kg.jpg', alt: 'Bag of Philippine rice', href: '#catalog' },
+  { title: 'Sardines', src: 'images/sardines.jpg', alt: 'Canned sardines', href: '#catalog' },
+  { title: 'Softdrink 2L', src: 'images/softdrink2l.jpg', alt: 'Bottle of soft drink', href: '#catalog' },
+  { title: 'Bar Soap', src: 'images/soap.jpg', alt: 'Bar soap', href: '#catalog' },
+  { title: 'Loaf of Bread', src: 'images/bread.jpg', alt: 'Loaf of bread', href: '#catalog' },
+  { title: 'Ground Coffee', src: 'images/coffee.jpg', alt: 'Ground coffee', href: '#catalog' },
 ];
 
 const Hero: React.FC = () => {
