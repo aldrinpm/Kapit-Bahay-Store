@@ -6,13 +6,20 @@ A mobile-first, frontend-only e-commerce storefront for a Filipino neighborhood 
 
 ![Kapit-Bahay Store landing page](assets/screenshot-home.png)
 
+## Live Demo
+
+🔗 **[Live Preview](https://aldrinpm.github.io/Kapit-Bahay-Store/)** — Experience the storefront with the latest works-wheel hero, dark/light theme, and mobile-responsive design.
+
 ## Features
 
-- **Animated landing hero** — full-bleed, mouse-reactive hero with floating product imagery.
-- **Category shortcuts** — quick jumps across 10 aisles (Rice & Grains, Canned Goods, Beverages, and more).
-- **Product catalog** — browse, search, category filtering, and sorting, with a product detail view.
-- **Cart drawer** — add, adjust, and remove items; the cart persists in `localStorage`.
-- **Simulated checkout** — Cash on Delivery checkout flow with an order confirmation screen. Clearly labeled as a simulation: no real payments, backend, or fulfillment.
+- **Works-wheel hero visual** — Interactive 3D product wheel that responds to scroll, drag, and arrow keys, with clickable items and reduced-motion support
+- **Animated landing hero** — full-bleed, mouse-reactive hero with floating product imagery
+- **Dark/Light theme** — User-toggleable theme persisted in localStorage, with theme-aware UI across all components
+- **Category shortcuts** — quick jumps across 10 aisles (Rice & Grains, Canned Goods, Beverages, and more)
+- **Product catalog** — browse, search, category filtering, and sorting, with a product detail view
+- **Cart drawer** — add, adjust, and remove items; the cart persists in `localStorage`
+- **Simulated checkout** — Cash on Delivery checkout flow with an order confirmation screen. Clearly labeled as a simulation: no real payments, backend, or fulfillment
+- **Mobile-first responsive design** — Functional hamburger menu, mobile-optimized search and cart
 
 ## Tech Stack
 
