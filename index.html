@@ -5,6 +5,23 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kapit-Bahay Store</title>
+    <script>
+      /* Apply the saved (or OS-preferred) theme before first paint so the
+         page never flashes the wrong colours. The theme store continues
+         from this class afterwards; 'kapit-theme' is its storage key. */
+      (function () {
+        var stored = null;
+        try {
+          stored = localStorage.getItem('kapit-theme');
+        } catch (error) {
+          stored = null;
+        }
+        var dark = stored
+          ? stored === 'dark'
+          : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (dark) document.documentElement.classList.add('dark');
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

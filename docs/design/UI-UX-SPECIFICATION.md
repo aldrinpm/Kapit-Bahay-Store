@@ -48,6 +48,7 @@ Keep checkout concise. Show customer form and order summary clearly. State promi
 
 ## Visual system
 Use design tokens for colors, spacing, typography, radii, shadows, and breakpoints. Suggested palette: deep green, warm yellow, orange accent, warm off-white, charcoal. Choose accessible shades and verify text contrast rather than relying on color names alone.
+- Theme: the app supports a user-toggled dark/light theme. Default follows the OS preference, the choice persists in `localStorage` (`kapit-theme`), and an inline script applies it before first paint so no theme flash occurs. Dark palette: near-black warm-green page, elevated `#1A231C` surfaces, ivory text; brand yellow/orange accents stay unchanged.
 
 ## Interaction and accessibility
 - Visible keyboard focus.

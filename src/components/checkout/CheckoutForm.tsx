@@ -51,11 +51,11 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto">
-        <div className="p-6 border-b flex justify-between items-center">
-          <h3 className="text-2xl font-bold text-kapit-primary">Checkout (Simulated COD)</h3>
-          <button onClick={onClose} className="text-gray-600 hover:text-kapit-primary p-2">
+    <div className="fixed inset-0 bg-black/50 dark:bg-black/70 z-50 flex items-center justify-center p-4">
+      <div className="bg-white text-kapit-text dark:bg-kapit-panel dark:text-kapit-light dark:shadow-black/60 rounded-xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto">
+        <div className="p-6 border-b dark:border-white/10 flex justify-between items-center">
+          <h3 className="text-2xl font-bold text-kapit-primary dark:text-kapit-light">Checkout (Simulated COD)</h3>
+          <button onClick={onClose} className="text-gray-600 hover:text-kapit-primary p-2 dark:text-gray-300 dark:hover:text-kapit-secondary" aria-label="Close checkout">
             <X size={24} />
           </button>
         </div>
@@ -63,11 +63,11 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ isOpen, onClose }) => {
         {order ? (
           // Confirmation Screen
           <div className="p-6 text-center space-y-4">
-            <h4 className="text-3xl font-bold text-green-600">Order Confirmed!</h4>
-            <p className="text-lg text-gray-700">This is a **simulation**. No real transaction or fulfillment has occurred.</p>
-            
-            <div className="bg-kapit-background p-4 rounded-lg text-left border border-dashed">
-              <p className="font-bold text-kapit-primary mb-2">Order Reference: {order.orderId}</p>
+            <h4 className="text-3xl font-bold text-green-600 dark:text-green-500">Order Confirmed!</h4>
+            <p className="text-lg text-gray-700 dark:text-kapit-light/80">This is a **simulation**. No real transaction or fulfillment has occurred.</p>
+
+            <div className="bg-kapit-background p-4 rounded-lg text-left border border-dashed dark:bg-white/5 dark:border-white/15">
+              <p className="font-bold text-kapit-primary dark:text-kapit-secondary mb-2">Order Reference: {order.orderId}</p>
               <p className="text-sm">Customer: {order.customer.fullName}</p>
               <p className="text-sm">Address: {order.customer.deliveryAddress}</p>
               <p className="text-sm">Payment: {order.paymentMethod}</p>
@@ -85,71 +85,71 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ isOpen, onClose }) => {
           // Form Screen
           <form onSubmit={handleSubmit} className="p-6 space-y-6">
             <div className="space-y-4">
-              <h4 className="text-xl font-semibold text-kapit-primary">Customer Details</h4>
-              
+              <h4 className="text-xl font-semibold text-kapit-primary dark:text-kapit-light">Customer Details</h4>
+
               <div className="space-y-2">
-                <label htmlFor="fullName" className="block text-sm font-medium text-kapit-text">Full Name</label>
-                <input 
-                  type="text" 
-                  id="fullName" 
-                  name="fullName" 
-                  value={customer.fullName} 
-                  onChange={handleInputChange} 
-                  className={`w-full p-2 border rounded-lg focus:ring-kapit-accent focus:border-kapit-accent ${errors.fullName ? 'border-red-500' : 'border-gray-300'}`} 
+                <label htmlFor="fullName" className="block text-sm font-medium text-kapit-text dark:text-kapit-light">Full Name</label>
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  value={customer.fullName}
+                  onChange={handleInputChange}
+                  className={`w-full p-2 border rounded-lg bg-white text-kapit-text focus:ring-kapit-accent focus:border-kapit-accent dark:bg-white/5 dark:text-kapit-light ${errors.fullName ? 'border-red-500 dark:border-red-400' : 'border-gray-300 dark:border-white/15'}`}
                 />
-                {errors.fullName && <p className="text-red-500 text-xs">{errors.fullName}</p>}
+                {errors.fullName && <p className="text-red-500 dark:text-red-400 text-xs">{errors.fullName}</p>}
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="mobileNumber" className="block text-sm font-medium text-kapit-text">Mobile Number</label>
-                <input 
-                  type="tel" 
-                  id="mobileNumber" 
-                  name="mobileNumber" 
-                  value={customer.mobileNumber} 
-                  onChange={handleInputChange} 
+                <label htmlFor="mobileNumber" className="block text-sm font-medium text-kapit-text dark:text-kapit-light">Mobile Number</label>
+                <input
+                  type="tel"
+                  id="mobileNumber"
+                  name="mobileNumber"
+                  value={customer.mobileNumber}
+                  onChange={handleInputChange}
                   placeholder="09171234567"
-                  className={`w-full p-2 border rounded-lg focus:ring-kapit-accent focus:border-kapit-accent ${errors.mobileNumber ? 'border-red-500' : 'border-gray-300'}`} 
+                  className={`w-full p-2 border rounded-lg bg-white text-kapit-text focus:ring-kapit-accent focus:border-kapit-accent dark:bg-white/5 dark:text-kapit-light ${errors.mobileNumber ? 'border-red-500 dark:border-red-400' : 'border-gray-300 dark:border-white/15'}`}
                 />
-                {errors.mobileNumber && <p className="text-red-500 text-xs">{errors.mobileNumber}</p>}
+                {errors.mobileNumber && <p className="text-red-500 dark:text-red-400 text-xs">{errors.mobileNumber}</p>}
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="deliveryAddress" className="block text-sm font-medium text-kapit-text">Delivery Address</label>
-                <textarea 
-                  id="deliveryAddress" 
-                  name="deliveryAddress" 
-                  value={customer.deliveryAddress} 
-                  onChange={handleInputChange} 
+                <label htmlFor="deliveryAddress" className="block text-sm font-medium text-kapit-text dark:text-kapit-light">Delivery Address</label>
+                <textarea
+                  id="deliveryAddress"
+                  name="deliveryAddress"
+                  value={customer.deliveryAddress}
+                  onChange={handleInputChange}
                   rows={3}
-                  className={`w-full p-2 border rounded-lg focus:ring-kapit-accent focus:border-kapit-accent ${errors.deliveryAddress ? 'border-red-500' : 'border-gray-300'}`} 
+                  className={`w-full p-2 border rounded-lg bg-white text-kapit-text focus:ring-kapit-accent focus:border-kapit-accent dark:bg-white/5 dark:text-kapit-light ${errors.deliveryAddress ? 'border-red-500 dark:border-red-400' : 'border-gray-300 dark:border-white/15'}`}
                 />
-                {errors.deliveryAddress && <p className="text-red-500 text-xs">{errors.deliveryAddress}</p>}
+                {errors.deliveryAddress && <p className="text-red-500 dark:text-red-400 text-xs">{errors.deliveryAddress}</p>}
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="deliveryInstructions" className="block text-sm font-medium text-kapit-text">Delivery Instructions (Optional)</label>
-                <textarea 
-                  id="deliveryInstructions" 
-                  name="deliveryInstructions" 
-                  value={customer.deliveryInstructions} 
-                  onChange={handleInputChange} 
+                <label htmlFor="deliveryInstructions" className="block text-sm font-medium text-kapit-text dark:text-kapit-light">Delivery Instructions (Optional)</label>
+                <textarea
+                  id="deliveryInstructions"
+                  name="deliveryInstructions"
+                  value={customer.deliveryInstructions}
+                  onChange={handleInputChange}
                   rows={2}
-                  className="w-full p-2 border border-gray-300 rounded-lg focus:ring-kapit-accent focus:border-kapit-accent" 
+                  className="w-full p-2 border border-gray-300 bg-white text-kapit-text rounded-lg focus:ring-kapit-accent focus:border-kapit-accent dark:border-white/15 dark:bg-white/5 dark:text-kapit-light"
                 />
               </div>
             </div>
 
             {/* Order Summary */}
-            <div className="bg-kapit-background p-4 rounded-lg border border-dashed">
-              <h4 className="text-lg font-semibold text-kapit-primary mb-3">Order Summary</h4>
+            <div className="bg-kapit-background p-4 rounded-lg border border-dashed dark:bg-white/5 dark:border-white/15">
+              <h4 className="text-lg font-semibold text-kapit-primary dark:text-kapit-light mb-3">Order Summary</h4>
               {cart.map(item => (
                 <div key={item.productId} className="flex justify-between text-sm mb-1">
                   <span>{item.quantity} x {item.product.name}</span>
                   <span>₱{Math.round((item.product.price * item.quantity) / 100).toLocaleString()}</span>
                 </div>
               ))}
-              <div className="flex justify-between font-bold text-lg mt-3 pt-3 border-t border-gray-300">
+              <div className="flex justify-between font-bold text-lg mt-3 pt-3 border-t border-gray-300 dark:border-white/15">
                 <span>Total:</span>
                 <span>₱{Math.round(cart.reduce((t, i) => t + i.product.price * i.quantity, 0) / 100).toLocaleString()}</span>
               </div>

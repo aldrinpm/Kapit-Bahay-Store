@@ -2,8 +2,16 @@ import React, { useState, useMemo } from 'react';
 import { PRODUCTS } from '../../data/products';
 import ProductCard from '../products/ProductCard';
 
-const ProductCatalog: React.FC = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+interface ProductCatalogProps {
+  /** Anchored to App so the header search filters this grid live. */
+  searchTerm: string;
+  onSearchChange: (value: string) => void;
+}
+
+const ProductCatalog: React.FC<ProductCatalogProps> = ({
+  searchTerm,
+  onSearchChange,
+}) => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [sortBy, setSortBy] = useState('popularity'); // 'price', 'popularity'
 
@@ -38,20 +46,21 @@ const ProductCatalog: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* Controls: Search, Filters, Sort */}
-      <div className="bg-white p-6 rounded-xl shadow-md flex flex-col md:flex-row gap-4">
-        <input 
-          type="text" 
-          placeholder="Search product name or description..." 
-          value={searchTerm} 
-          onChange={(e) => setSearchTerm(e.target.value)} 
-          className="p-2 border border-gray-300 rounded-lg flex-grow focus:ring-kapit-accent focus:border-kapit-accent" 
+      <div className="bg-white dark:bg-kapit-panel dark:shadow-black/30 p-6 rounded-xl shadow-md flex flex-col md:flex-row gap-4">
+        <input
+          type="text"
+          placeholder="Search product name or description..."
+          aria-label="Search products"
+          value={searchTerm}
+          onChange={(e) => onSearchChange(e.target.value)}
+          className="flex-grow p-2 rounded-lg border border-gray-300 bg-white text-kapit-text focus:border-kapit-accent focus:ring-kapit-accent dark:border-white/15 dark:bg-white/5 dark:text-kapit-light"
         />
-        
+
         {/* Category Filter Dropdown */}
-        <select 
-          value={selectedCategory} 
-          onChange={(e) => setSelectedCategory(e.target.value)} 
-          className="p-2 border border-gray-300 rounded-lg focus:ring-kapit-accent focus:border-kapit-accent"
+        <select
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+          className="rounded-lg border border-gray-300 bg-white p-2 text-kapit-text focus:border-kapit-accent focus:ring-kapit-accent dark:border-white/15 dark:bg-white/5 dark:text-kapit-light"
         >
           <option value="All">All Categories</option>
           {/* Categories list will be dynamic from src/data/categories.ts */}
@@ -69,10 +78,10 @@ const ProductCatalog: React.FC = () => {
         </select>
 
         {/* Sort Dropdown */}
-        <select 
-          value={sortBy} 
-          onChange={(e) => setSortBy(e.target.value)} 
-          className="p-2 border border-gray-300 rounded-lg focus:ring-kapit-accent focus:border-kapit-accent"
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+          className="rounded-lg border border-gray-300 bg-white p-2 text-kapit-text focus:border-kapit-accent focus:ring-kapit-accent dark:border-white/15 dark:bg-white/5 dark:text-kapit-light"
         >
           <option value="popularity">Popularity</option>
           <option value="price">Price (Low to High)</option>
@@ -81,16 +90,16 @@ const ProductCatalog: React.FC = () => {
 
       {/* Product Grid */}
       {filteredAndSortedProducts.length > 0 ? (
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
           {filteredAndSortedProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
       ) : (
         // Empty State
-        <div className="text-center p-10 bg-white rounded-xl shadow-md">
-          <h4 className="text-xl font-semibold text-kapit-primary">No Products Found</h4>
-          <p className="text-kapit-text/70 mt-2">Try adjusting your search term, category filter, or clear all filters to view the catalog.</p>
+        <div className="text-center p-10 bg-white rounded-xl shadow-md dark:bg-kapit-panel dark:shadow-black/30">
+          <h4 className="text-xl font-semibold text-kapit-primary dark:text-kapit-light">No Products Found</h4>
+          <p className="text-kapit-text/70 dark:text-kapit-light/70 mt-2">Try adjusting your search term, category filter, or clear all filters to view the catalog.</p>
         </div>
       )}
     </div>

@@ -28,29 +28,35 @@ const CATEGORY_SHORTCUTS: CategoryShortcut[] = [
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  // Shared so the header's mobile/desktop search filters the catalog live.
+  const [searchTerm, setSearchTerm] = useState('');
   return (
     <div className="min-h-screen flex flex-col">
       {/* Phase 1: Header */}
-      <Header onCartClick={() => setIsCartOpen(true)} />
+      <Header
+        onCartClick={() => setIsCartOpen(true)}
+        searchTerm={searchTerm}
+        onSearchChange={setSearchTerm}
+      />
 
       {/* Phase 1: Hero Section (full-bleed, animated, mouse-reactive) */}
       <Hero />
 
       <main className="flex-grow w-full max-w-7xl mx-auto px-4">
         {/* Phase 1: Category Shortcuts */}
-        <section className="mb-12" aria-label="Browse by category">
-          <h3 className="text-2xl font-semibold mb-6 text-kapit-primary">Browse by Category</h3>
+        <section id="categories" className="mb-12 scroll-mt-20" aria-label="Browse by category">
+          <h3 className="mb-6 text-2xl font-semibold text-kapit-primary dark:text-kapit-light">Browse by Category</h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {CATEGORY_SHORTCUTS.map((cat) => (
               <a
                 key={cat.name}
                 href="#catalog"
-                className="kb-cat group flex flex-col items-center gap-2 rounded-lg bg-white p-4 text-center shadow transition duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kapit-accent"
+                className="kb-cat group flex flex-col items-center gap-2 rounded-lg bg-white p-4 text-center shadow transition duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kapit-accent dark:bg-kapit-panel dark:shadow-lg dark:shadow-black/30"
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-kapit-secondary/40 text-kapit-primary transition-colors duration-300 group-hover:bg-kapit-secondary">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-kapit-secondary/40 text-kapit-primary transition-colors duration-300 group-hover:bg-kapit-secondary dark:bg-white/10 dark:text-kapit-secondary">
                   <cat.icon size={24} />
                 </span>
-                <span className="text-sm font-medium text-kapit-primary">{cat.name}</span>
+                <span className="text-sm font-medium text-kapit-primary dark:text-kapit-light">{cat.name}</span>
               </a>
             ))}
           </div>
@@ -58,12 +64,12 @@ function App() {
 
         {/* Phase 2: Product Catalog */}
         <section id="catalog" className="mb-10 scroll-mt-20">
-            <h3 className="text-2xl font-semibold mb-6 text-kapit-primary">Featured Products</h3>
-            <ProductCatalog />
+            <h3 className="mb-6 text-2xl font-semibold text-kapit-primary dark:text-kapit-light">Featured Products</h3>
+            <ProductCatalog searchTerm={searchTerm} onSearchChange={setSearchTerm} />
         </section>
       </main>
       
-      <footer className="p-4 border-t mt-auto text-center text-sm text-gray-500">
+      <footer className="border-t p-4 mt-auto text-center text-sm text-gray-500 dark:border-white/10 dark:text-kapit-light/60">
         &copy; 2026 Kapit-Bahay Store (Simulated Demo)
       </footer>
       <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} onCheckout={() => { setIsCartOpen(false); setIsCheckoutOpen(true); }} />

@@ -2,15 +2,17 @@ import React from 'react';
 import { ArrowRight, Truck, ShieldCheck, HeartHandshake } from 'lucide-react';
 import Spotlight from './Spotlight';
 import ShimmerButton from './ShimmerButton';
+import ProductWheel from './ProductWheel';
 
-// A small, curated set of real product images used as the hero's lifestyle visual.
-const ESSENTIALS = [
-  { src: '/images/rice5kg.jpg', alt: 'Bag of Philippine rice', top: '4%', left: '6%' },
-  { src: '/images/sardines.jpg', alt: 'Canned sardines', top: '12%', left: '62%' },
-  { src: '/images/softdrink2l.jpg', alt: 'Bottle of soft drink', top: '46%', left: '0%' },
-  { src: '/images/soap.jpg', alt: 'Bar soap', top: '52%', left: '40%' },
-  { src: '/images/bread.jpg', alt: 'Loaf of bread', top: '70%', left: '66%' },
-  { src: '/images/coffee.jpg', alt: 'Ground coffee', top: '76%', left: '22%' },
+// Featured essentials for the hero's works-wheel visual. Titles are also
+// used by the index list and the front-card title when the drum is open.
+const WHEEL_ITEMS = [
+  { title: 'Rice 5 kg', src: '/images/rice5kg.jpg', alt: 'Bag of Philippine rice', href: '#catalog' },
+  { title: 'Sardines', src: '/images/sardines.jpg', alt: 'Canned sardines', href: '#catalog' },
+  { title: 'Softdrink 2L', src: '/images/softdrink2l.jpg', alt: 'Bottle of soft drink', href: '#catalog' },
+  { title: 'Bar Soap', src: '/images/soap.jpg', alt: 'Bar soap', href: '#catalog' },
+  { title: 'Loaf of Bread', src: '/images/bread.jpg', alt: 'Loaf of bread', href: '#catalog' },
+  { title: 'Ground Coffee', src: '/images/coffee.jpg', alt: 'Ground coffee', href: '#catalog' },
 ];
 
 const Hero: React.FC = () => {
@@ -49,9 +51,14 @@ const Hero: React.FC = () => {
             </ShimmerButton>
             <a
               href="#catalog"
-              className="kb-hero-fade inline-flex items-center gap-2 rounded-lg px-6 py-3 font-semibold text-kapit-primary transition hover:bg-kapit-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kapit-accent"
+              className="kb-hero-fade group inline-flex items-center gap-2 rounded-lg px-6 py-3 font-semibold text-kapit-primary transition-colors duration-300 hover:bg-kapit-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kapit-accent"
             >
               Browse Catalog
+              <ArrowRight
+                size={18}
+                aria-hidden
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
             </a>
           </div>
 
@@ -67,19 +74,15 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        {/* Supporting product/lifestyle visual */}
-        <div className="relative flex h-80 flex-1 items-center justify-center sm:h-96 lg:h-[460px]">
-          <div className="kb-orbit absolute h-72 w-72 rounded-full bg-kapit-accent/10 sm:h-80 sm:w-80" />
-          <div className="kb-orbit-slow absolute h-56 w-56 rounded-full bg-kapit-primary/10 sm:h-64 sm:w-64" />
-          {ESSENTIALS.map((item) => (
-            <img
-              key={item.src}
-              src={item.src}
-              alt={item.alt}
-              className="kb-float kb-shadow-soft absolute h-24 w-24 rounded-2xl border border-white object-cover shadow-lg sm:h-28 sm:w-28"
-              style={{ top: item.top, left: item.left }}
-            />
-          ))}
+        {/* Supporting visual: Crafter UI works-wheel — ring of essentials that
+            blows open into a 3D drum you turn (scroll, drag, or arrow keys) */}
+        <div className="kb-hero-fade flex flex-1 items-center justify-center">
+          <ProductWheel
+            items={WHEEL_ITEMS}
+            label="Kapit-Bahay Store"
+            action="Shop"
+            className="h-80 w-full max-w-lg sm:h-96 lg:h-[460px]"
+          />
         </div>
       </div>
     </section>
