@@ -5,11 +5,12 @@
 A mobile-first, frontend-only e-commerce storefront for a Filipino neighborhood variety store — rice, canned goods, snacks, and daily necessities, all at honest prices. Prices are in Philippine pesos (₱).
 
 ![Kapit-Bahay Store landing page](assets/screenshot-home.png)
-![Kapit-Bahay Store landing page](assets/mobile.png)
 
 ## Live Demo
 
 🔗 **[Live Preview](https://aldrinpm.github.io/Kapit-Bahay-Store/)** — Experience the storefront with the latest works-wheel hero, dark/light theme, and mobile-responsive design.
+
+> ⚠️ **Note:** The live demo will be available once GitHub Pages is enabled. The workflow file is already configured in `.github/workflows/deploy.yml`. To enable: Go to your repository Settings → Pages → Select "GitHub Actions" as source.
 
 ## Features
 
@@ -45,6 +46,17 @@ npm run build    # type-check with tsc and build for production
 npm run preview  # preview the production build
 npm run lint     # ESLint
 ```
+
+## Deployment
+
+This repository is configured for **automatic GitHub Pages deployment** via GitHub Actions. 
+
+To enable the live preview:
+1. Go to your repository **Settings → Pages**
+2. Under "Source", select **GitHub Actions**
+3. Click **Save**
+
+The site will be automatically deployed to `https://aldrinpm.github.io/Kapit-Bahay-Store/` on every push to `master`.
 
 ## Documentation
 
