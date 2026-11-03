@@ -190,12 +190,28 @@ const ProductWheel: React.FC<ProductWheelProps> = ({
 
   // One pass per frame: ease toward the target, then write every transform.
   React.useEffect(() => {
-    if (!stage.h) return;
     let frame = 0;
     const { ringR, ringScale, drumR, bow } = metrics;
 
     const draw = () => {
       frame = requestAnimationFrame(draw);
+
+      // Self-heal an un-measured stage: if the first measurement landed
+      // before layout had settled (stylesheet-injection races, headless
+      // paint), every metric collapses to zero and the ring renders as
+      // invisible, zero-size tiles. As soon as the stage does have a real
+      // box — at any later frame — re-measure; the corrected metrics
+      // restart this loop and the wheel redraws properly. Costs one
+      // property read per frame only while the metrics are bogus.
+      const el = stageRef.current;
+      if (metrics.cardW < 40 && el) {
+        const w = el.clientWidth;
+        const h = el.clientHeight;
+        if (w > 0 && h > 0 && (w !== stage.w || h !== stage.h)) {
+          setStage({ w, h });
+        }
+      }
+
       const gap = target.current - turn.current;
       if (Math.abs(gap) < 0.0005) turn.current = target.current;
       else turn.current += gap * (reduced ? 1 : EASE);

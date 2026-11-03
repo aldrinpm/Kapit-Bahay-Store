@@ -29,17 +29,17 @@ const Hero: React.FC = () => {
       <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-10 px-4 py-16 sm:px-6 lg:flex-row lg:py-24">
         {/* Copy */}
         <div className="kb-hero-fade flex flex-1 flex-col items-center text-center lg:items-start lg:text-left">
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-kapit-primary/20 bg-white/70 px-4 py-1.5 text-sm font-medium text-kapit-primary backdrop-blur">
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-kapit-primary/20 bg-white/70 px-4 py-1.5 text-sm font-medium text-kapit-primary backdrop-blur dark:border-kapit-secondary/30 dark:bg-white/10 dark:text-kapit-secondary">
             <Truck size={16} />
             Neighborhood essentials, delivered
           </span>
 
-          <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-kapit-text sm:text-5xl lg:max-w-xl">
+          <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-kapit-text sm:text-5xl lg:max-w-xl dark:text-kapit-light">
             Everyday Essentials,{' '}
             <span className="text-kapit-accent">Just Around the Corner.</span>
           </h1>
 
-          <p className="kb-hero-fade mt-4 max-w-md text-lg text-kapit-text/80">
+          <p className="kb-hero-fade mt-4 max-w-md text-lg text-kapit-text/80 dark:text-kapit-light/80">
             Your friendly Filipino neighborhood store — rice, canned goods, snacks,
             and daily necessities, all at honest prices.
           </p>
@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
             </ShimmerButton>
             <a
               href="#catalog"
-              className="kb-hero-fade group inline-flex items-center gap-2 rounded-lg px-6 py-3 font-semibold text-kapit-primary transition-colors duration-300 hover:bg-kapit-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kapit-accent"
+              className="kb-hero-fade group inline-flex items-center gap-2 rounded-lg px-6 py-3 font-semibold text-kapit-primary transition-colors duration-300 hover:bg-kapit-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kapit-accent dark:text-kapit-secondary dark:hover:bg-white/10"
             >
               Browse Catalog
               <ArrowRight
@@ -62,21 +62,25 @@ const Hero: React.FC = () => {
             </a>
           </div>
 
-          <div className="kb-hero-fade mt-10 flex flex-wrap justify-center gap-6 text-sm text-kapit-text/70 lg:justify-start">
+          <div className="kb-hero-fade mt-10 flex flex-wrap justify-center gap-6 text-sm text-kapit-text/70 lg:justify-start dark:text-kapit-light/70">
             <span className="inline-flex items-center gap-2">
-              <ShieldCheck size={16} className="text-kapit-primary" />
+              <ShieldCheck size={16} className="text-kapit-primary dark:text-kapit-secondary" />
               Cash on Delivery
             </span>
             <span className="inline-flex items-center gap-2">
-              <HeartHandshake size={16} className="text-kapit-primary" />
+              <HeartHandshake size={16} className="text-kapit-primary dark:text-kapit-secondary" />
               Friendly service
             </span>
           </div>
         </div>
 
         {/* Supporting visual: Crafter UI works-wheel — ring of essentials that
-            blows open into a 3D drum you turn (scroll, drag, or arrow keys) */}
-        <div className="kb-hero-fade flex flex-1 items-center justify-center">
+            blows open into a 3D drum you turn (scroll, drag, or arrow keys).
+            w-full is required: in the stacked flex-col the wrapper's width
+            would otherwise be its fit-content, and a wheel made purely of
+            absolutely-positioned cards has no intrinsic width (collapses to
+            zero, blanking the hero on mobile). */}
+        <div className="kb-hero-fade flex w-full flex-1 items-center justify-center">
           <ProductWheel
             items={WHEEL_ITEMS}
             label="Kapit-Bahay Store"
